@@ -1,18 +1,13 @@
 const express = require("express");
 const app = express();
 
-app.get("/", (req, res) => {
-  res.send("<h1>Welcome  express</h1>");
-});
+const userRoutes = require("./routes/user");
 
-app.get("/about", (req, res) => {
-  res.send("<h1>Welcome to  page by GET Method</h1>");
-});
+app.use(express.urlencoded({ extended: false }));
+app.use(express.static("public"));
 
-app.post("/about", (req, res) => {
-  res.send("<h1>Welcome hello   page by POST method</h1>");
-});
+app.use("/", userRoutes);
 
 app.listen(3600, (req, res) => {
-  console.log("Server Running on 3500");
+  console.log("Server Running on 3600");
 });
