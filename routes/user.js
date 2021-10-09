@@ -2,21 +2,22 @@ const router = require("express").Router();
 const path = require("path");
 
 router.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "../home.html"));
+  // res.sendFile(path.join(__dirname, "../home.html"));
+
+  res.render("home", { names: ["aman", "raj", "neha"], isAdmin: false });
 });
 
 router.get("/about", (req, res) => {
   res.send("<h1>Welcome to  page by GET Method</h1>");
 });
 
-router.get("/form", (req, res) => {
-  res.sendFile(path.join(__dirname, "../form.html"));
+router.post("/about", (req, res) => {
+  res.send("<h1>Welcome to  page by POST Method</h1>");
 });
 
-router.get("/about/contactus", (req, res) => {
-  res.send(
-    "<h1>Welcome to  page by GET Method and also in contact us page</h1>"
-  );
+router.get("/form", (req, res) => {
+  // res.sendFile(path.join(__dirname, "../form.html"));
+  res.render("form", { isAdmin: false });
 });
 
 router.get("/api", (req, res) => {
