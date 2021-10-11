@@ -3,13 +3,20 @@ const app = express();
 
 const userRoutes = require("./routes/user");
 
-app.use(express.urlencoded({ extended: false }));
-app.use(express.static("public"));
+app.use(express.urlencoded({ extended: false })); // For getting data from POST request in req.body(undefined otherwise)
 
-app.set("view engine", "ejs");
-app.set("views", "views");
+app.use(express.static("public"));// For serving as it is to the browser without processing
+
+app.set("view engine", "ejs");// Setting view engine as EJS(others PUG, Handlebars)
+app.set("views", "views");// Setting views folder
 
 app.use("/", userRoutes);
+
+
+// if none route matches...like 404 page not found
+app.use('*', (req, res) => {
+  res.send('<h1>oops....Page not found</h1>')
+})
 
 app.listen(3600, (req, res) => {
   console.log("Server Running on 3600");
