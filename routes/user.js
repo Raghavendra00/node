@@ -10,6 +10,9 @@ router.get("/form", userController.form);
 
 router.get("/api", userController.api);
 
-router.post("/savedata",userController.savedata);
+router.post("/savedata", userController.savedata);
+router.get('/phone', (req, res) => {
+    res.send("I am in phone");
+})
 
 module.exports = router;

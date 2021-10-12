@@ -15,7 +15,7 @@ app.use("/", userRoutes);
 
 // if none route matches...like 404 page not found
 app.use('*', (req, res) => {
-  res.send('<h1>oops....Page not found</h1>')
+  res.send('<h1>oops....Page  found</h1>')
 })
 
 app.listen(3600, (req, res) => {
