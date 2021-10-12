@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 
 const userRoutes = require("./routes/user");
+require('dotenv').config();
+const PORT = process.env.PORT;
 
 app.use(express.urlencoded({ extended: false })); // For getting data from POST request in req.body(undefined otherwise)
 
@@ -18,6 +20,6 @@ app.use('*', (req, res) => {
   res.send('<h1>oops....Page  found</h1>')
 })
 
-app.listen(3600, (req, res) => {
-  console.log("Server Running on 3600");
+app.listen(PORT, (req, res) => {
+  console.log(`Server Running on ${PORT}`);
 });
