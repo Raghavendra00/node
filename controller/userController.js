@@ -1,4 +1,7 @@
-exports.home =  (req, res) => {
+const User = require('../models/user')
+
+
+exports.home = (req, res) => {
   // res.sendFile(path.join(__dirname, "../home.html"));
 
   res.render("home", { names: ["aman", "raj", "neha"], isAdmin: true });
