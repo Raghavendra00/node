@@ -21,16 +21,15 @@ exports.api = (req, res) => {
   res.json({ name: "aman", age: 21 });
 };
 
-exports.savedata = (req, res) => {
-    console.log(req.body);
-    let email = req.body.email
-    let password = req.body.password
+exports.savedata = async (req, res) => {
+  // console.log(req.body);
+  var data = {
+    name: req.body.name,
+    age: req.body.age,
+    mobile:req.body.mobile
+  }
 
-    if (email == 'mail@gmail.com' && password == '12345') {
-        res.send('<h1>Welcome</h1>')
-    }
-    else {
-        res.send("<h1>Wrong credentials</h1>");
+  const result = await User(data).save()
+  console.log(result);
 
-    }
 };
