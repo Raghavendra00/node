@@ -28,8 +28,23 @@ exports.savedata = async (req, res) => {
     age: req.body.age,
     mobile:req.body.mobile
   }
-
   const result = await User(data).save()
   console.log(result);
+  res.send("<h1>Thank you</h1>")
 
 };
+
+exports.viewdata = async (req, res) => {
+  const data = await User.find()
+  console.log(data);
+  res.render("viewdata", {data, isAdmin: false });
+}
+
+exports.singleuserdata = async (req, res) => {
+  const id = req.params.id
+
+  const data = await User.find({ _id: id });
+  // console.log(data[0]);
+   res.render("singleuser", { data : data[0], isAdmin: false });
+
+}
